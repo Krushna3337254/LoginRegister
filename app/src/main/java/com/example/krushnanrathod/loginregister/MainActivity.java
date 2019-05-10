@@ -38,9 +38,6 @@ public class MainActivity extends AppCompatActivity {
         final Spinner spinner = (Spinner) findViewById(R.id.country);
 
 
-        db = openOrCreateDatabase( "StudentDB", Context.MODE_PRIVATE, null );                    //opening or creating databasefrom invoking object
-        db.execSQL( "CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);" );       //creating table by firing sql Query
-
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.country, android.R.layout.simple_spinner_item);
