@@ -1,6 +1,8 @@
 package com.example.krushnanrathod.loginregister;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -24,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
     DatePickerDialog datePickerDialog;
     RadioGroup radioGroup;
-
+    SQLiteDatabase db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -35,12 +37,19 @@ public class MainActivity extends AppCompatActivity {
         radioGroup=findViewById( R.id.radiogrp );
         final Spinner spinner = (Spinner) findViewById(R.id.country);
 
+
+        db = openOrCreateDatabase( "StudentDB", Context.MODE_PRIVATE, null );                    //opening or creating databasefrom invoking object
+        db.execSQL( "CREATE TABLE IF NOT EXISTS student(rollno VARCHAR,name VARCHAR,marks VARCHAR);" );       //creating table by firing sql Query
+
+
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
                 R.array.country, android.R.layout.simple_spinner_item);
         // Specify the layout to use when the list of choices appears
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // Apply the adapter to the spinner
         spinner.setAdapter(adapter);
+
+        //Spinner Code
 
         spinner.setOnItemSelectedListener( new AdapterView.OnItemSelectedListener() {
             @Override
@@ -58,6 +67,10 @@ public class MainActivity extends AppCompatActivity {
         } );
 
 
+
+
+
+//Calendar Code
 
 
         e4.setOnClickListener( new View.OnClickListener() {
@@ -84,6 +97,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+//Radio Button
+
         radioGroup.setOnCheckedChangeListener( new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
@@ -105,5 +121,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-   
+
 }
