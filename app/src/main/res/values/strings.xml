@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">LoginRegister</string>
+    <string-array name="country">
+        <item>Afganistan</item>
+        <item>Australia</item>
+        <item>Bangladesh</item>
+        <item>Brazil</item>
+        <item>England</item>
+        <item>India</item>
+        <item>Koria</item>
+        <item>South Africa</item>
+        <item>Russia</item>
+    </string-array>
+</resources>
